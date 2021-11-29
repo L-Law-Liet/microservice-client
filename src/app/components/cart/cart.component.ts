@@ -8,7 +8,7 @@ import {OrderService} from '../../services/order.service';
   styleUrls: ['./cart.component.sass']
 })
 export class CartComponent implements OnInit {
-  cart = [];
+  cart: any[] = [];
   loading = true;
   total = 0;
 
@@ -36,16 +36,13 @@ export class CartComponent implements OnInit {
       }
     )
   }
-  makeOrder(){
-    this.orderService.makeOrder(this.total, this.cart).subscribe(
-      res => {
-        console.log(res);
-        alert('Ordered!');
-        this.getCart();
-      },
-      error => {
-        alert(error.error)
-      }
-    );
-  }
+  // makeOrder(){
+  //   this.orderService.makeOrder(this.total, this.cart).subscribe(
+  //     res => {
+  //       console.log(res);
+  //       alert('Ordered!');
+  //       this.getCart();
+  //     }
+  //   );
+  // }
 }

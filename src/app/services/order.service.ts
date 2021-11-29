@@ -3,8 +3,6 @@ import {BaseUrlsService as BaseUrl} from './base-urls.service';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from './user.service';
 import {Observable} from 'rxjs';
-import {Product} from '../models/product.model';
-import {Cart} from '../models/cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,7 @@ export class OrderService {
   constructor(private http: HttpClient,
               private userService: UserService) { }
 
-  makeOrder(total: number, cart: Cart[]): Observable<any>{
+  makeOrder(total: number, cart: []): Observable<any>{
     let fd = new FormData();
     // @ts-ignore
     fd.append('total', total);

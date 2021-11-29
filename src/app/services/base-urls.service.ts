@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BaseUrlsService {
-  public static URL = 'http://store.loc/api/';
-  public static AUTH_URL = 'http://store.loc/';
+  public static URL = 'http://localhost:8762/';
   constructor() { }
 }

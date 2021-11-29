@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NewsService} from '../../services/news.service';
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-news',
@@ -7,13 +7,11 @@ import {NewsService} from '../../services/news.service';
   styleUrls: ['./news.component.sass']
 })
 export class NewsComponent implements OnInit {
-  news = [];
-  // @ts-ignore
-  paginator: Paginator;
-  constructor(private service: NewsService) { }
+  news: any[] = [];
+  constructor(private service: ProductService) { }
 
   ngOnInit(): void {
-    this.getNewsPageable();
+    this.getRatings();
   }
 
   getRatings(): void {

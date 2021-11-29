@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-8 offset-md-2 my-5" *ngIf="cart.length > 0">
       <h3 class="text-decoration-underline">Total: ${{total}}</h3>
-      <h3 (click)="makeOrder()" style="cursor: pointer" class="text-center btn-outline-primary border p-3 rounded">Make order</h3>
+      <h3 style="cursor: pointer" class="text-center btn-outline-primary border p-3 rounded">Make order</h3>
     </div>
     <div class="my-5" *ngIf="cart.length == 0">
       <h3 class="text-center text-secondary border p-3 rounded">Empty</h3>
