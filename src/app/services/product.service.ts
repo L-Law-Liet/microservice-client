@@ -41,4 +41,7 @@ export class ProductService {
     fd.append('_method', 'put');
     return this.http.post(this.PRODUCT_URL + '/' + id, fd);
   }
+  getRatings(): Observable<any>{
+    return this.http.get()
+  }
 }

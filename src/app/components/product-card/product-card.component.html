@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ product.name }}</h5>
+    <div class="row">
+      <div class="col-md-6 p-2">
+        <img class="card-img" [src]="[product.image]" alt="">
+      </div>
+
+      <div class="col-md-6 p-2">
+        <p class="card-text">{{ product.body }}</p>
+<!--        Attribute or Style Directives-->
+          <p>
+            $ {{product.price }}
+          </p>
+
+        <a [routerLink]="'/product/' + product.id" class="btn btn-primary">More</a>
+      </div>
+    </div>
+  </div>
+</div>
