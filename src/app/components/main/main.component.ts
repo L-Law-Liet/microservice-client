@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
   getProducts(): void {
     this.service.getProducts().subscribe(res => {
       this.products = res;
+      console.log(res)
     });
   }
 
