@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../../services/cart.service';
 import {OrderService} from '../../services/order.service';
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private orderService: OrderService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -24,17 +25,18 @@ export class CartComponent implements OnInit {
     this.cartService.getCart().subscribe(
       res => {
         console.log(res);
-        this.cart = res;
+        for (let i = 0; i < res.cartList.length; i++) {
+          this.productService.getProduct(res.cartList[i].product_id).subscribe(
+            res => {
+              console.log(res)
+              this.cart.push(res)
+              this.total += res.price
+            }
+          )
+        }
         this.loading = false;
       }
     );
-  }
-  remove(id: number): void{
-    this.cartService.removeFromCart(id).subscribe(
-      res => {
-        this.getCart();
-      }
-    )
   }
   // makeOrder(){
   //   this.orderService.makeOrder(this.total, this.cart).subscribe(

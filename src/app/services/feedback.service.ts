@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BaseUrlsService as BaseUrl} from './base-urls.service';
-import {Feedback} from '../models/feedback.model';
 
 @Injectable({
   providedIn: 'root'

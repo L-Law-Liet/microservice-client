@@ -5,6 +5,7 @@ import {LoginComponent} from "./components/auth/login/login.component";
 import {CabinetComponent} from "./components/cabinet/cabinet.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {NewsComponent} from "./components/rating/news.component";
+import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'cabinet',
     component: CabinetComponent
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailsComponent
   },
   {
     path: 'news',

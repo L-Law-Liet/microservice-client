@@ -20,8 +20,12 @@
           <li class="nav-item">
             <a [routerLinkActive]="['active']"  class="nav-link" [routerLink]="'/cart'">Cart</a>
           </li>
-          <li><a class="dropdown-item" [routerLinkActive]="['active']" [routerLink]="'/cabinet'">Profile</a></li>
-          <li><a (click)="logout()" class="dropdown-item">Exit</a></li>
+          <li class="nav-item">
+            <a [routerLinkActive]="['active']" class="nav-link" aria-current="page" [routerLink]="'/cabinet'">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="nav-link">Exit</a>
+          </li>
         </div>
       </ul>
     </div>

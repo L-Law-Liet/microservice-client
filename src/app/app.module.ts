@@ -13,12 +13,16 @@ import {CartComponent} from "./components/cart/cart.component";
 import {CabinetComponent} from "./components/cabinet/cabinet.component";
 import {NewsComponent} from "./components/rating/news.component";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {FeedbackComponent} from "./components/feedback/feedback.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
+    ProductDetailsComponent,
+    FeedbackComponent,
     ProductCardComponent,
     CartComponent,
     CabinetComponent,

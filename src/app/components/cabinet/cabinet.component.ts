@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-cabinet',
@@ -10,9 +11,11 @@ export class CabinetComponent implements OnInit {
   // @ts-ignore
   form: FormGroup;
   loading = true;
+  profile: any;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private service: UserService
   ) { }
 
   ngOnInit(): void {
@@ -21,5 +24,15 @@ export class CabinetComponent implements OnInit {
       phone: '',
       image: ''
     });
+    this.getProfile()
+  }
+  getProfile() {
+    this.service.getProfile(localStorage.getItem('id')).subscribe(
+      res => {
+        console.log(res)
+        this.profile = res;
+        this.loading = false
+      }
+    )
   }
 }

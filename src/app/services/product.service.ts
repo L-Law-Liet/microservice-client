@@ -8,12 +8,13 @@ import {Observable} from 'rxjs';
 })
 export class ProductService {
   PRODUCT_URL = BaseUrl.URL + 'products';
+  RATING_PRODUCT_URL = BaseUrl.URL + 'ratings/product';
   RATINGS_URL = BaseUrl.URL + 'catalog';
 
   constructor(private http: HttpClient) { }
 
   getProduct(id: any): Observable<any>{
-    return this.http.get(this.PRODUCT_URL + '/' + id);
+    return this.http.get(this.RATING_PRODUCT_URL + '/' + id);
   }
   getProducts(): Observable<any>{
     return this.http.get(this.PRODUCT_URL);

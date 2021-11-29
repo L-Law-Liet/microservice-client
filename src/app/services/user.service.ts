@@ -10,7 +10,9 @@ import {LogService} from './log.service';
   providedIn: 'root'
 })
 export class UserService {
-  LOGIN_URL = BaseUrl.URL + 'login';
+  LOGIN_URL = BaseUrl.URL + 'auth';
+  USER_URL = BaseUrl.URL + 'auth/user';
+  PROFILE_URL = BaseUrl.URL + 'profile';
 
   // @ts-ignore
   user: User;
@@ -19,27 +21,23 @@ export class UserService {
               private router: Router,
               private logger: LogService) { }
 
-  login(user: any): Observable<{token: string}>{
-    return this.http.post<{token: string}>(this.LOGIN_URL, user).pipe(
-      tap(
-        ({token}) => {
-          console.log('serv', token);
-          localStorage.setItem('token', token);
-        },
-        error => {
-          this.logger.log(error);
-        }
-      )
-    );
+  login(user: any): Observable<any>{
+    return this.http.post(this.LOGIN_URL, user, {observe: 'response'});
   }
   logout(): void{
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('id');
     // @ts-ignore
     this.user = null;
     this.router.navigate(['/']);
   }
   isAuth(): boolean{
-    return !!localStorage.getItem('user');
+    return !!localStorage.getItem('token');
+  }
+  getUserIdByToken(): Observable<any> {
+    return this.http.get(this.USER_URL);
+  }
+  getProfile(id: any): Observable<any> {
+    return this.http.get(this.PROFILE_URL + '/' + id);
   }
 }

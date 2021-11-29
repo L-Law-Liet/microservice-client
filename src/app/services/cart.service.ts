@@ -8,23 +8,17 @@ import {UserService} from './user.service';
   providedIn: 'root'
 })
 export class CartService {
-  CART_URL = BaseUrl.URL + 'users/';
+  CART_URL = BaseUrl.URL + 'cart';
 
 
   constructor(private http: HttpClient,
               private userService: UserService) { }
 
   getCart(): Observable<any>{
-    return this.http.get(this.CART_URL + this.userService.user.id + '/carts');
+    return this.http.get(this.CART_URL + '/' + localStorage.getItem('id'));
   }
 
-  addToCart(req: FormData): Observable<any>{
-    return this.http.post(this.CART_URL + this.userService.user.id + '/carts', req);
-  }
-  removeFromCart(id: number): Observable<any>{
-    return this.http.delete(this.CART_URL + this.userService.user.id + '/carts/' + id);
-  }
-  contains(id: number): Observable<any>{
-    return this.http.get(this.CART_URL + this.userService.user.id + '/carts/' + id);
+  addToCart(req: any): Observable<any>{
+    return this.http.post(this.CART_URL, req);
   }
 }

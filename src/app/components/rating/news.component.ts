@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
   getRatings(): void {
     this.service.getRatings().subscribe( res => {
       console.log(res);
-      this.news = res.data;
+      this.news = res[0];
     });
   }
 }

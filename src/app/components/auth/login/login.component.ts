@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: '',
+      username: '',
       password: '',
     });
   }
@@ -26,16 +26,22 @@ export class LoginComponent implements OnInit {
     // this.service.user().subscribe(res => {
     //   console.log(res);
     // });
-    this.service.login(this.form.getRawValue()).subscribe(res => {
-        console.log('s', res);
-        this.router.navigate(['/'])
-        // tslint:disable-next-line:no-shadowed-variable
+    this.service.login(this.form.getRawValue()).subscribe(
+      res => {
+        console.log(res, res.headers.get('Authorization'));
+        localStorage.setItem('token', res.headers.get('Authorization'));
+        this.service.getUserIdByToken().subscribe(
+          res1 => {
+            localStorage.setItem('id', res1);
+            this.router.navigate(['/cabinet']);
+          },
+          error => {
+            console.log(error);
+          }
+        );
       },
       error => {
-        this.form.enable();
         console.log(error);
-        this.form.setErrors(error.error.errors);
-        console.log(this.form.errors);
       }
     );
   }
