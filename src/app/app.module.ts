@@ -15,6 +15,8 @@ import {NewsComponent} from "./components/rating/news.component";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {FeedbackComponent} from "./components/feedback/feedback.component";
+import { ArticleComponent } from './components/article/article.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {FeedbackComponent} from "./components/feedback/feedback.component";
     CartComponent,
     CabinetComponent,
     NewsComponent,
-    LoginComponent
+    LoginComponent,
+    ArticleComponent,
+    ArticlesComponent
   ],
   imports: [
     HttpClientModule,

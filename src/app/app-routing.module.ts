@@ -6,6 +6,8 @@ import {CabinetComponent} from "./components/cabinet/cabinet.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {NewsComponent} from "./components/rating/news.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {ArticleComponent} from "./components/article/article.component";
+import {ArticlesComponent} from "./components/articles/articles.component";
 
 const routes: Routes = [
   {
@@ -25,8 +27,16 @@ const routes: Routes = [
     component: ProductDetailsComponent
   },
   {
-    path: 'news',
+    path: 'ratings',
     component: NewsComponent
+  },
+  {
+    path: 'news',
+    component: ArticlesComponent
+  },
+  {
+    path: 'news/:id',
+    component: ArticleComponent
   },
   {
     path: 'cart',

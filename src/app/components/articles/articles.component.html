@@ -1,0 +1,19 @@
+<div class="m-3">
+  <div class="m-4">
+    <h1 class="text-center">News</h1>
+  </div>
+  <div *ngIf="ready">
+    <div class="row" *ngFor="let article of news">
+      <div class="col-md-1"></div>
+      <div class="mb-4 col-md-6 p-0">
+        <img [src]="'https://via.placeholder.com/644x300/abcdef/fff?text=' + article?.title.slice(0, 6)" class="card-img-top">
+      </div>
+      <div class="card mb-4 col-md-4 p-0">
+        <div class="card-body">
+          <h5 class="card-title">Title: {{ article?.title }}</h5>
+          <p class="card-text">Description: {{ article?.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

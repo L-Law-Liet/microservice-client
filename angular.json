@@ -102,8 +102,5 @@
       }
     }
   },
-  "defaultProject": "microservice-store",
-  "cli": {
-    "analytics": "ca627a4a-e51e-486b-a307-c6545e0c063c"
-  }
+  "defaultProject": "microservice-store"
 }
