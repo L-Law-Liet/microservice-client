@@ -21,4 +21,7 @@ export class CartService {
   addToCart(req: any): Observable<any>{
     return this.http.post(this.CART_URL, req);
   }
+  delete(id: any): Observable<any>{
+    return this.http.delete(this.CART_URL + '/' + id);
+  }
 }

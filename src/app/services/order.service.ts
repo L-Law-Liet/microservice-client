@@ -8,18 +8,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
-  ORDER_URL = BaseUrl.URL + 'user/';
+  ORDER_URL = BaseUrl.URL + 'orders';
 
   constructor(private http: HttpClient,
               private userService: UserService) { }
 
-  makeOrder(total: number, cart: []): Observable<any>{
-    let fd = new FormData();
-    // @ts-ignore
-    fd.append('total', total);
-    // @ts-ignore
-    fd.append('cart', JSON.stringify(cart));
-    return this.http.post(this.ORDER_URL + this.userService.user.id + '/order', fd);
+  makeOrder(total: number, cart: any[]): Observable<any>{
+    return this.http.post(this.ORDER_URL, {total, product_ids: cart, user_id: localStorage.getItem('id')});
   }
 
   getOrderItems(): Observable<any>{

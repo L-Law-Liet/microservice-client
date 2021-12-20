@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private orderService: OrderService,
     private productService: ProductService
   ) { }
 
@@ -22,15 +23,17 @@ export class CartComponent implements OnInit {
     this.getCart();
   }
   getCart(): void {
+    this.cart = []
+    this.total = 0
     this.cartService.getCart().subscribe(
       res => {
         console.log(res);
         for (let i = 0; i < res.cartList.length; i++) {
           this.productService.getProduct(res.cartList[i].product_id).subscribe(
-            res => {
-              console.log(res)
-              this.cart.push(res)
-              this.total += res.price
+            res1 => {
+              console.log(res1)
+              this.cart.push({res1, id: res.cartList[i].id})
+              this.total += res1.price
             }
           )
         }
@@ -38,13 +41,19 @@ export class CartComponent implements OnInit {
       }
     );
   }
-  // makeOrder(){
-  //   this.orderService.makeOrder(this.total, this.cart).subscribe(
-  //     res => {
-  //       console.log(res);
-  //       alert('Ordered!');
-  //       this.getCart();
-  //     }
-  //   );
-  // }
+  makeOrder(){
+    this.orderService.makeOrder(this.total, this.cart.map(product => product.res1.id)).subscribe(
+      res => {
+        console.log(res);
+        alert('Ordered!');
+        this.getCart();
+      }
+    );
+  }
+  delete(id: any) {
+    this.cartService.delete(id).subscribe(res => {
+      console.log(res)
+      this.getCart()
+    })
+  }
 }

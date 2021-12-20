@@ -4,16 +4,21 @@
   <h1 class="text-center">Cart</h1>
   <div class="row">
     <div class="offset-md-2 col-md-8 mb-2" *ngFor="let item of cart">
-      <app-product-card [product]="item"></app-product-card>
+      <div>
+        <app-product-card [product]="item.res1"></app-product-card>
+      </div>
       <div class="d-flex justify-content-between mt-1 mb-5">
         <div>
-          <div><b>Cost: ${{ item.price }}</b></div>
+          <div><b>Cost: ${{ item.res1.price }}</b></div>
+        </div>
+        <div>
+          <button class="btn btn-outline-danger" (click)="delete(item.id)">x</button>
         </div>
       </div>
     </div>
     <div class="col-md-8 offset-md-2 my-5" *ngIf="cart.length > 0">
       <h3 class="text-decoration-underline">Total: ${{total}}</h3>
-      <h3 style="cursor: pointer" class="text-center btn-outline-primary border p-3 rounded">Make order</h3>
+      <h3 (click)="makeOrder()" style="cursor: pointer" class="text-center btn-outline-primary border p-3 rounded">Make order</h3>
     </div>
     <div class="my-5" *ngIf="cart.length == 0">
       <h3 class="text-center text-secondary border p-3 rounded">Empty</h3>

@@ -51,7 +51,7 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(){
     let req = {
       product_id: this.product.id,
-      user_id: localStorage.getItem('id')
+      userId: localStorage.getItem('id')
     };
 
     this.cartService.addToCart(req).subscribe(
