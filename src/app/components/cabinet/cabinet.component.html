@@ -3,8 +3,13 @@
     <h1 class="text-center">Profile</h1>
   </div>
   <div class="row">
-    <p>Name: {{ profile.name }}</p>
-    <p>Surname: {{ profile.surname }}</p>
-    <p>Email: {{ profile.email }}</p>
+    <div class="col-md-6">
+      <img [src]="'https://via.placeholder.com/644x300/abcdef/fff?text=' + profile.name" alt="">
+    </div>
+    <div class="col-md-6 card card-body">
+      <p>Name: {{ profile.name }}</p>
+      <p>Surname: {{ profile.surname }}</p>
+      <p>Email: {{ profile.email }}</p>
+    </div>
   </div>
 </div>

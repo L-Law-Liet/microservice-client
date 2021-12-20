@@ -16,4 +16,8 @@ export class NewsService {
   getAll(): Observable<any>{
     return this.http.get(this.NEWS_URL);
   }
+
+  get(id: any): Observable<any>{
+    return this.http.get(this.NEWS_URL + '/' + id);
+  }
 }

@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
+        alert('Error')
+        this.form.enable();
       }
     );
   }

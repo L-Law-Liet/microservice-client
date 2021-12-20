@@ -1,1 +1,17 @@
-<p>article works!</p>
+<div *ngIf="!loading" class="m-3">
+  <div class="m-4">
+    <h1 class="text-center">{{ article.title }}</h1>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <img class="card-img" [src]="'https://via.placeholder.com/644x300/abcdef/fff?text=' + article?.title.slice(0, 6)" alt="">
+    </div>
+    <div class="col-md-6">
+      <div class="card p-2">
+        <p>
+          {{ article.text }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
